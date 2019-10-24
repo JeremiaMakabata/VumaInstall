@@ -1,0 +1,24 @@
+version: "3.2"
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/VumaInstall/backend
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/VumaInstall/frontend
+
+      - //VumaInstall/frontend/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    command: bash -c  "npm install axios react-router-dom --save && npm start"
