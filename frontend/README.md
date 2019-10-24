@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Local Setup
 
-In the project directory, you can run:
+Python 3 and [pip3](mornally pre installed on a UNIX OS) need to already be installed. 
 
-### `npm start`
+Clone the repo to your computer. It is advisable to have git and clone using  git clone <repo url>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+$ cd ~/PATH_ON_LOCAL
+$ git clone https://github.com/JeremiaMakabata/VumaInstall.git
+$ cd VumaInstall
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Backend
+For this part you will need to activate your virtual environment:  
+Install the `python package: Recommended pip and conda` (https://docs.anaconda.com/anaconda/install/, https://pip.pypa.io/en/stable/installing/) to run the project, then create an empty `Virtual evnvironment`. Then `cd` into the `backend` directory and run migrations.
 
-### `npm test`
+```
+$ cd backend
+install  requirements.txt: 
+$ pip install -r requirements.txt or conda install --yes --file requirements.txt
+activate the visrtial enviromnet
+$ python manage.py makemigrations && python manage.py migrate
+(venv) $python manage.py runserver
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can see the API now at [http://127.0.0.1:8000/api/request](http://127.0.0.1:8000/api/request).
 
-### `npm run build`
+## Frontend
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Open up a new command line console so there are now **two** open. Navigate to the `frontend` directory.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+$ cd ~/PATH_ON_LOCAL
+$ 
+$ cd VumaInstall/frontend
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Make sure React is already installed globally. If not `$ npm install -g create-react-app`.
 
-### `npm run eject`
+Then install necessary packages and start the React server:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+$ npm install
+$ npm start
+```
+NB: it is recommended to create a super user for the django app, you can do this by navigating to the frontend directory: 
+```
+(venv) $ cd ~/PATH_ON_LOCAL/VumaInstall/frontend
+(venv) $ python manage.py createsuperuser
+(venv) $ python manage.py runserver
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Navigate to [http://localhost:3000/](http://localhost:3000/) to see a list of our DRF backend content outputted using React.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
